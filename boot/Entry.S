@@ -6,7 +6,8 @@
     .global vector_end
 
     vector_start:
-	MOV	R0, R1 //R1의 내용 -> R0
+	LDR R0, =0x10000000
+	LDR R1, [R0]
     vector_end:
 	.space 1024, 0 //현재 위치부터 1024바이트를 0으로 채워라
 .end //end text section
