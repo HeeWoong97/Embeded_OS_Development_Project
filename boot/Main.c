@@ -32,6 +32,7 @@ static void Printf_test(void) {
     char* str = "printf pointer test";
     char* nullptr = 0;
     uint32_t i = 5;
+    uint32_t* sysctrl0 = (uint32_t*)0x10001000;
 
     debug_printf("%s\n", "Hello printf");
     debug_printf("output string pointer: %s\n", str);
@@ -39,4 +40,5 @@ static void Printf_test(void) {
     debug_printf("%u = 5\n", i);
     debug_printf("dec = %u, hex = %x\n", 0xff, 0xff);
     debug_printf("print_zero %u\n", 0);
+    debug_printf("SYSCTRL0 %x\n", *sysctrl0);
 }
