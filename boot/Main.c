@@ -24,7 +24,8 @@ void main(void) {
     
     Printf_test();
     Timer_test();
-
+    
+    putstr("while(1) is running...\n");
     while(1);
 }
 
