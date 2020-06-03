@@ -50,7 +50,7 @@ static void Printf_test(void) {
 }
 
 static void Timer_test(void) {
-    while (1) {
+    for (uint32_t i = 0; i < 5; i++) {
         debug_printf("current count : %u\n", Hal_timer_get_1ms_counter());
         delay(1000);
     }
