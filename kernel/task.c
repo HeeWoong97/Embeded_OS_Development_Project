@@ -28,6 +28,7 @@ void Kernel_task_init(void) {
     for (uint32_t i = 0; i < MAX_TASK_NUM; i++) {
         sTask_list[i].stack_base = (uint8_t*)(TASK_STACK_START + (i * USR_TASK_STACK_SIZE));
         sTask_list[i].sp = (uint32_t)sTask_list[i].stack_base + USR_TASK_STACK_SIZE - 4;
+
         sTask_list[i].sp -= sizeof(KernelTaskContext_t);
         KernelTaskContext_t* ctx = (KernelTaskContext_t*)sTask_list[i].sp;
         ctx->pc = 0;
@@ -43,7 +44,7 @@ uint32_t Kernel_task_create(KernelTaskFunc_t startFunc) {
     }
 
     KernelTaskContext_t* ctx = (KernelTaskContext_t*)new_tcb->sp;
-    ctx->pc = (uint32_t)startFunc;
+    ctx->pc = (uint32_t)startFunc; // 컨텍스트 스위칭을 할때 ARM의 pc레지스터에 이 pc가 저장된다.
 
     return (sAllocated_tcb_index - 1);
 }
@@ -52,7 +53,7 @@ void Kernel_task_scheduler(void) {
     gCurrent_tcb = &sTask_list[sCurrent_tcb_index];
     gNext_tcb = Scheduler_round_robin_algorithm();
 
-    Kernel_task_context_switching();
+    Kernel_task_context_switching(); // lib/switch.h
 }
 
 void Kernel_task_start(void) {

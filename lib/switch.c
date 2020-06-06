@@ -16,7 +16,7 @@ __attribute__ ((naked)) void Save_context(void) {
     __asm__ ("MRS    r0, cpsr");
     __asm__ ("PUSH  {r0}");
     // save current task stack pointer into the current TCB
-    __asm__ ("LDR   r0, =gCurrent_tcb");
+    __asm__ ("LDR   r0, =gCurrent_tcb"); // Kernel/task.c
     __asm__ ("LDR   r0, [r0]");
     __asm__ ("STMIA r0!, {sp}");
 }
