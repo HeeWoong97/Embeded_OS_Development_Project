@@ -1,13 +1,15 @@
-#include "stdint.h"
 #include "HalUart.h"
 #include "HalInterrupt.h"
 #include "HalTimer.h"
 
 #include "stdio.h"
 #include "stdlib.h"
+#include "stdint.h"
 #include "stdbool.h"
 
 #include "Kernel.h"
+#include "task.h"
+#include "event.h"
 
 static void Hw_init(void);
 static void Kernel_init(void);
@@ -48,6 +50,7 @@ static void Kernel_init(void) {
     uint32_t taskId;
 
     Kernel_task_init();
+    Kernel_event_flag_init();
 
     taskId = Kernel_task_create(User_task0);
     if (NOT_ENOUGH_TASK_NUM == taskId) {
@@ -92,10 +95,16 @@ static void Timer_test(void) {
 void User_task0(void) {
     uint32_t local = 0;
 
+    debug_printf("User Task #0 SP=0x%x\n", &local);
+
     while(true) {
-       debug_printf("User Task #0 SP=0x%x\n", &local);
-       delay(1000);
-       Kernel_yield(); 
+        KernelEventFlag_t handle_event = Kernel_wait_events(KernelEventFlag_UartIn);
+        switch(handle_event) {
+        case KernelEventFlag_UartIn:
+            debug_printf("\nEvent handled\n");
+            break;
+        }
+        Kernel_yield();
     }
 }
 

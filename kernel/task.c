@@ -58,7 +58,7 @@ void Kernel_task_scheduler(void) {
 
 void Kernel_task_start(void) {
     gNext_tcb = &sTask_list[sCurrent_tcb_index];
-    Restore_context();
+    Restore_context(); // lib/switch.h
 }
 
 static KernelTcb_t* Scheduler_round_robin_algorithm(void) {
