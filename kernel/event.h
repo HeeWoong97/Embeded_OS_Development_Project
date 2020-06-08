@@ -1,6 +1,7 @@
 #ifndef KERNEL_EVENT_H_
 #define KERNEL_EVENT_H_
 
+#include "stdint.h"
 #include "stdbool.h"
 
 typedef enum KernelEventFlag_t

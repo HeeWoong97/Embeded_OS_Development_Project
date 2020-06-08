@@ -1,5 +1,3 @@
-#include "stdint.h"
-#include "HalUart.h"
 #include "stdio.h"
 
 #define PRINTF_BUF_LEN	1024

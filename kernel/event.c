@@ -1,7 +1,3 @@
-#include "stdint.h"
-#include "stdbool.h"
-
-#include "stdio.h"
 #include "event.h"
 
 static uint32_t sEventFlag;

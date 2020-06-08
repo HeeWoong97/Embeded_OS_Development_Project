@@ -1,14 +1,4 @@
-#include "stdint.h"
-#include "stdbool.h"
-#include "stdio.h"
-
-#include "ARMv7AR.h"
 #include "task.h"
-#include "switch.h"
-
-#include "HalUart.h"
-
-#include "MemoryMap.h"
 
 #define MAX_TASK_NUM            (TASK_STACK_SIZE / USR_TASK_STACK_SIZE)
 

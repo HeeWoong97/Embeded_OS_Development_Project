@@ -1,6 +1,17 @@
 #ifndef KERNEL_TASK_H_
 #define KERNEL_TASK_H_
 
+#include "stdint.h"
+#include "stdbool.h"
+#include "stdio.h"
+
+#include "ARMv7AR.h"
+#include "switch.h"
+
+#include "HalUart.h"
+
+#include "MemoryMap.h"
+
 #define NOT_ENOUGH_TASK_NUM     0xFFFFFFFF
 
 #define USR_TASK_STACK_SIZE     0x100000

@@ -1,12 +1,7 @@
-/*
- * Uart.h
- *
- *  Created on: Sep 8, 2018
- *      Author: maanu
- */
-
 #ifndef HAL_RVPB_UART_H_
 #define HAL_RVPB_UART_H_
+
+#include "stdint.h"
 
 typedef union UARTDR_t
 {

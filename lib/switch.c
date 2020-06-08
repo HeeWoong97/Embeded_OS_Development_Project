@@ -1,7 +1,3 @@
-#include "stdint.h"
-#include "stdbool.h"
-
-#include "task.h"
 #include "switch.h"
 
 __attribute__ ((naked)) void Kernel_task_context_switching(void) {
