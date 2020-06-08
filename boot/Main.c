@@ -108,9 +108,20 @@ void User_task0(void) {
             if (uartch == '\r') {
                 cmdBuf[cmdBufIdx] = '\0';
 
-                Kernel_send_msg(KernelMsgQ_Task1, &cmdBufIdx, 1);
-                Kernel_send_msg(KernelMsgQ_Task1, cmdBuf, cmdBufIdx);
-                Kernel_send_events(KernelEventFlag_CmdIn);
+                while (true) {
+                    Kernel_send_events(KernelEventFlag_CmdIn);
+                    if (false == Kernel_send_msg(KernelMsgQ_Task1, &cmdBufIdx, 1)) {
+                        Kernel_yield();
+                    }
+                    else if (false == Kernel_send_msg(KernelMsgQ_Task1, cmdBuf, cmdBufIdx)) {
+                        uint8_t rollback;
+                        Kernel_recv_msg(KernelMsgQ_Task1, &rollback, 1);
+                        Kernel_yield();
+                    }
+                    else {
+                        break;
+                    }
+                }
 
                 cmdBufIdx = 0;
             }
