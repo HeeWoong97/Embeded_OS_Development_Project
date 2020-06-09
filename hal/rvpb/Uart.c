@@ -1,7 +1,7 @@
-#include "Uart.h"
-
 #include "HalUart.h"
 #include "HalInterrupt.h"
+
+#include "Uart.h"
 
 #include "Kernel.h"
 

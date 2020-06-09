@@ -1,7 +1,10 @@
-#include "stdint.h"
-#include "memio.h"
-#include "Interrupt.h"
 #include "HalInterrupt.h"
+
+#include "stdint.h"
+
+#include "Interrupt.h"
+
+#include "memio.h"
 #include "armcpu.h"
 
 extern volatile GicCput_t* GicCpu;
