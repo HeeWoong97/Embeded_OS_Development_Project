@@ -20,12 +20,13 @@ void Hal_uart_init(void) {
     Uart->uartimsc.bits.RXIM = 1;
 
     //Register UART interrupt handler
-    Hal_interrupt_enable(UART_INTERRUPT0);
+    Hal_interrupt_enable(UART_INTERRUPT0); // UART를 초기화 하면서 인터럽트도 함께 등록
     Hal_interrupt_register_handler(interrupt_handler, UART_INTERRUPT0);
 }
 
 void Hal_uart_put_char(uint8_t ch) {
     while (Uart->uartfr.bits.TXFF);
+
     Uart->uartdr.all = (ch & 0xFF);
 }
 
@@ -37,8 +38,8 @@ uint8_t Hal_uart_get_char(void) {
     data = Uart->uartdr.all;
 
     if (data & 0xFFFFFF00) {
-	Uart->uartrsr.all = 0xFF;
-	return 0;
+        Uart->uartrsr.all = 0xFF;
+        return 0;
     }
 
     return (uint8_t)(data & 0xFF);

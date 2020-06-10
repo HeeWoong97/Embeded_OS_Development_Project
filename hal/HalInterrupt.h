@@ -1,6 +1,8 @@
 #ifndef HAL_HALINTERRUPT_H_
 #define HAL_HALINTERRUPT_H_
 
+#include "stdint.h"
+
 #define	INTERRUPT_HANDLER_NUM	225
 
 typedef void (*InterHdlr_fptr)(void);

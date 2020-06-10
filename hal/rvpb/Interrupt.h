@@ -1,6 +1,8 @@
 #ifndef HAL_RVPB_INTERRUPT_H_
 #define HAL_RVPB_INTERRUPT_H_
 
+#include "stdint.h"
+
 typedef union CpuControl_t
 {
     uint32_t all;
@@ -92,13 +94,13 @@ typedef union ControllerType_t
 
 typedef struct GicCput_t
 {
-    CpuControl_t       cpucontrol;        //0x000
-    PriorityMask_t     prioritymask;      //0x004
-    BinaryPoint_t      binarypoint;       //0x008
-    InterruptAck_t     interruptack;      //0x00C
-    EndOfInterrupt_t   endofinterrupt;    //0x010
-    RunningInterrupt_t runninginterrupt;  //0x014
-    HighestPendInter_t highestpendinter;  //0x018
+    CpuControl_t       cpucontrol;          //0x000
+    PriorityMask_t     prioritymask;        //0x004
+    BinaryPoint_t      binarypoint;         //0x008
+    InterruptAck_t     interruptack;        //0x00C
+    EndOfInterrupt_t   endofinterrupt;      //0x010
+    RunningInterrupt_t runninginterrupt;    //0x014
+    HighestPendInter_t highestpendinter;    //0x018
 } GicCput_t;
 
 typedef struct GicDist_t
