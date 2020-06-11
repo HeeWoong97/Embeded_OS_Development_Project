@@ -1,6 +1,6 @@
-#include "HalInterrupt.h"
-
 #include "stdint.h"
+
+#include "HalInterrupt.h"
 
 #include "Interrupt.h"
 

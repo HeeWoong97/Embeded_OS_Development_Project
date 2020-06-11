@@ -1,3 +1,5 @@
+#include "stdint.h"
+
 #include "HalUart.h"
 #include "HalInterrupt.h"
 

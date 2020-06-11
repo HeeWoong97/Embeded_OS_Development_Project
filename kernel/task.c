@@ -1,11 +1,9 @@
 #include "task.h"
 
-#define MAX_TASK_NUM            (TASK_STACK_SIZE / USR_TASK_STACK_SIZE)
-
 KernelTcb_t* gCurrent_tcb;
 KernelTcb_t* gNext_tcb;
 
-static KernelTcb_t  sTask_list[MAX_TASK_NUM];
+static KernelTcb_t  sTask_list[MAX_TASK_NUM]; // task control bolck array
 static uint32_t     sAllocated_tcb_index;
 static uint32_t     sCurrent_tcb_index;
 
@@ -34,7 +32,7 @@ uint32_t Kernel_task_create(KernelTaskFunc_t startFunc) {
     }
 
     KernelTaskContext_t* ctx = (KernelTaskContext_t*)new_tcb->sp;
-    ctx->pc = (uint32_t)startFunc; // 컨텍스트 스위칭을 할때 ARM의 pc레지스터에 이 pc가 저장된다.
+    ctx->pc = (uint32_t)startFunc; // 매개변수로 받아온 함수 포인터를 테스크의 시작 위치로 초기화함
 
     return (sAllocated_tcb_index - 1);
 }

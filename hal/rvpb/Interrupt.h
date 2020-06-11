@@ -1,8 +1,6 @@
 #ifndef HAL_RVPB_INTERRUPT_H_
 #define HAL_RVPB_INTERRUPT_H_
 
-#include "stdint.h"
-
 typedef union CpuControl_t
 {
     uint32_t all;

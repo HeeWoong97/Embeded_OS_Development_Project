@@ -258,25 +258,25 @@ LOAD linker stubs
  .comment       0x0000000000000059       0x5a build/synch.o
  .comment       0x0000000000000059       0x5a build/Kernel.o
 
-.debug_line     0x0000000000000000      0xf01
+.debug_line     0x0000000000000000      0xf05
  .debug_line    0x0000000000000000       0x6d build/Entry.os
  .debug_line    0x000000000000006d      0x19b build/Main.o
  .debug_line    0x0000000000000208       0x4e build/Handler.o
  .debug_line    0x0000000000000256       0x68 build/Regs.o
- .debug_line    0x00000000000002be      0x126 build/Interrupt.o
- .debug_line    0x00000000000003e4      0x121 build/Uart.o
- .debug_line    0x0000000000000505       0xe0 build/Timer.o
- .debug_line    0x00000000000005e5       0x80 build/stdlib.o
- .debug_line    0x0000000000000665      0x17d build/stdio.o
- .debug_line    0x00000000000007e2       0x6d build/armcpu.o
- .debug_line    0x000000000000084f       0x61 build/switch.o
- .debug_line    0x00000000000008b0      0x134 build/task.o
- .debug_line    0x00000000000009e4      0x128 build/msg.o
- .debug_line    0x0000000000000b0c       0x8d build/event.o
- .debug_line    0x0000000000000b99       0xf1 build/synch.o
- .debug_line    0x0000000000000c8a      0x1ac build/Kernel.o
- .debug_line    0x0000000000000e36       0x74 /usr/lib/gcc/arm-none-eabi/9.2.1/libgcc.a(_udivsi3.o)
- .debug_line    0x0000000000000eaa       0x57 /usr/lib/gcc/arm-none-eabi/9.2.1/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00000000000002be      0x12a build/Interrupt.o
+ .debug_line    0x00000000000003e8      0x121 build/Uart.o
+ .debug_line    0x0000000000000509       0xe0 build/Timer.o
+ .debug_line    0x00000000000005e9       0x80 build/stdlib.o
+ .debug_line    0x0000000000000669      0x17d build/stdio.o
+ .debug_line    0x00000000000007e6       0x6d build/armcpu.o
+ .debug_line    0x0000000000000853       0x61 build/switch.o
+ .debug_line    0x00000000000008b4      0x134 build/task.o
+ .debug_line    0x00000000000009e8      0x128 build/msg.o
+ .debug_line    0x0000000000000b10       0x8d build/event.o
+ .debug_line    0x0000000000000b9d       0xf1 build/synch.o
+ .debug_line    0x0000000000000c8e      0x1ac build/Kernel.o
+ .debug_line    0x0000000000000e3a       0x74 /usr/lib/gcc/arm-none-eabi/9.2.1/libgcc.a(_udivsi3.o)
+ .debug_line    0x0000000000000eae       0x57 /usr/lib/gcc/arm-none-eabi/9.2.1/libgcc.a(_dvmd_tls.o)
 
 .debug_info     0x0000000000000000     0x3ec3
  .debug_info    0x0000000000000000       0x26 build/Entry.os

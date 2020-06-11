@@ -51,12 +51,12 @@ static void Hw_init(void) {
 static void Kernel_init(void) {
     uint32_t taskId;
 
-    Kernel_task_init();
+    Kernel_task_init(); // 메모리에 테스크 스택 할당
     Kernel_event_flag_init();
     Kernel_msgQ_init();
     Kernel_sem_init(1);
 
-    taskId = Kernel_task_create(User_task0);
+    taskId = Kernel_task_create(User_task0); // 커널에 태스크 등록
     if (NOT_ENOUGH_TASK_NUM == taskId) {
         putstr("Task0 creation fail\n");
     }
@@ -71,7 +71,7 @@ static void Kernel_init(void) {
         putstr("Task0 creation fail\n");
     }
 
-    Kernel_start();
+    Kernel_start(); // 백업 없이 메모리의 첫번째 테스크(User_task0)부터 실행
 }
 
 static void Printf_test(void) {
@@ -126,6 +126,7 @@ void User_task0(void) {
 
                 Kernel_send_msg(KernelMsgQ_Task1, &cmdBufIdx, 1);
                 Kernel_send_msg(KernelMsgQ_Task1, cmdBuf, cmdBufIdx);
+
                 Kernel_send_events(KernelEventFlag_CmdIn);
 
                 cmdBufIdx = 0;

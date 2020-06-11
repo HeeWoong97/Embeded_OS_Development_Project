@@ -1,7 +1,7 @@
+#include "stdint.h"
+
 #include "HalTimer.h"
 #include "HalInterrupt.h"
-
-#include "stdint.h"
 
 #include "Timer.h"
 
