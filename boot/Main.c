@@ -101,7 +101,7 @@ static void Test_critical_section(uint32_t p, uint32_t taskId) {
 
     debug_printf("User Task #%u Send=%u\n", taskId, p);
     shared_value = p;
-    Kernel_yield();
+    Kernel_yield(); // 스케쥴링 하는동안 다른 테스크가 shared_value를 변경할 수 있다.
     delay(1000);
     debug_printf("User Task #%u Shared Value=%u\n", taskId, shared_value);
 
@@ -156,7 +156,7 @@ void User_task1(void) {
     while (true) {
         KernelEventFlag_t handle_event = Kernel_wait_events(KernelEventFlag_CmdIn|KernelEventFlag_Unlock);
         switch (handle_event) {
-        case KernelEventFlag_CmdIn:
+        case KernelEventFlag_CmdIn: 
             memclr(cmd, 16);
             Kernel_recv_msg(KernelMsgQ_Task1, &cmdlen, 1);
             Kernel_recv_msg(KernelMsgQ_Task1, cmd, cmdlen);

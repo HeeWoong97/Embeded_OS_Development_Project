@@ -38,7 +38,7 @@ bool Kernel_send_msg(KernelMsgQ_t Qname, void* data, uint32_t count) {
 
     for (uint32_t i = 0; i < count; i++) {
         if (false == Kernel_msgQ_enqueue(Qname, *d)) {
-            for (uint32_t j = 0; j < i; j++) {
+            for (uint32_t j = 0; j < i; j++) { // i번째 loop에서 오류가 떴음
                 uint8_t rollback;
                 Kernel_msgQ_dequeue(Qname, &rollback);
             }
